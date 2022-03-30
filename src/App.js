@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import { nanoid } from 'nanoid'
+import  { idHelpers, arrayHelpers } from "./library/helpers";
+
+
+console.log(arrayHelpers.getRendomElement([1 ,2, 3]));
 
 function App() {
   return (
@@ -10,7 +13,7 @@ function App() {
         <h1>
           First react app
         </h1>
-        <p>Your unique ID is: {nanoid()}</p>
+        <p>Your unique ID is: {idHelpers.generateId()}</p>
         <a
           className="App-link"
           href="https://github.com/Diiiiiii/react-app-first"
