@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import  { idHelpers, arrayHelpers } from "./library/helpers";
+import  { idHelpers} from "./library/helpers";
+import { RandomValue } from "./componenets/RandomValue";
+import { RepositoryLink } from "./componenets/RepositoryLink";
 
-
-console.log(arrayHelpers.getRendomElement([1 ,2, 3]));
 
 function App() {
   return (
@@ -14,14 +14,8 @@ function App() {
           First react app
         </h1>
         <p>Your unique ID is: {idHelpers.generateId()}</p>
-        <a
-          className="App-link"
-          href="https://github.com/Diiiiiii/react-app-first"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub Repository
-        </a>
+        <RepositoryLink />
+        <RandomValue />
       </header>
     </div>
   );
