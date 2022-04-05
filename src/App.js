@@ -8,8 +8,8 @@ import { ABQuestion } from './componenets/ABQuestion';
 
 function App() {
   // definiramo dvije funkcije i stavljamo ih u onClikEventhandler
-  const handleButtonAClick = () => console.log('Clicked A');
-  const handleButtonBClick = () => console.log('Clicked B');
+  const handleOnChoice = (choiceValue) => console.log(choiceValue);
+//  const handleButtonBClick = () => console.log('Clicked B');
   return (
     <div className="App">
       <header className="App-header">
@@ -27,8 +27,21 @@ function App() {
           <button onClick={handleButtonBClick}>Red pill</button>
         </div> */}
         <ABQuestion 
-          onButtonAClick={handleButtonAClick}
-          onButtonBClick={handleButtonBClick}
+          question="Make the right choice"
+          buttonA="Blue pill"
+          buttonB="Red pill"
+          buttonAValue="Blue"
+          buttonBValue="Red"
+          onChoice={handleOnChoice}
+          /* onButtonAClick={handleButtonAClick}
+          onButtonBClick={handleButtonBClick} */
+        /><ABQuestion 
+        question="Make the right choice"
+        buttonA="Chocolate"
+        buttonB="Vanilla"
+        buttonAValue="Chocolate"
+        buttonBValue="Vanilla"
+        onChoice={handleOnChoice}
         />
       </header>
     </div>
