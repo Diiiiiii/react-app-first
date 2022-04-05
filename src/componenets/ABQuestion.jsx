@@ -6,12 +6,21 @@ button.addEventListener('click', () => {
 }) */
 
 export function ABQuestion(props) {
+    // const handleOnClickA = () => props.onChoice(props.buttonAValue);
+    // const handleOnClickB = () => props.onChoice(props.buttonBValue);
+    
+    
     return (
         <div>
           <p>{props.question}</p>
           <div>
           {/* <button onClick={props.onButtonAClick}>{props.buttonA}</button>
           <button onClick={props.onButtonBClick}>{props.buttonB}</button> */}
+            
+            {/*<button onClick = {handleOnClickA}>{props.buttonA}</button>  */}
+            {/*<button onClick = {handleOnClickB}>{props.buttonB}</button>  */}
+            
+            
             <button onClick = {() => props.onChoice(props.buttonAValue)}>
                 {props.buttonA}
             </button>
