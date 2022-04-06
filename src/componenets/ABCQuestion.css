@@ -1,4 +1,4 @@
-.ABQuestion {
+.ABCQuestion {
     background: white;
     border: 1px solid black;
     color: black;
@@ -6,14 +6,14 @@
     font-size: 1rem;
     padding: 1rem;
   }
-  .ABQuestion__text {
+  .ABCQuestion__text {
     margin-bottom: 2rem;
   }
-  .ABQuestion__answers {
+  .ABCQuestion__answers {
     display: flex;
     flex-flow: row nowrap;
   }
-  .ABQuestion__answer {
+  .ABCQuestion__answer {
     width: 100%;
     min-height: 2rem;
     border-radius: 0;
@@ -22,6 +22,6 @@
     color: white;
     cursor: pointer;
   }
-  .ABQuestion__answer:nth-child(even) {
+  .ABCQuestion__answer:nth-child(even) {
     background: blue;
   }

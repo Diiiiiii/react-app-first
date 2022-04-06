@@ -4,11 +4,23 @@ import  { idHelpers} from "./library/helpers";
 import { RandomValue } from "./componenets/RandomValue";
 import { RepositoryLink } from "./componenets/RepositoryLink";
 import { ABQuestion } from './componenets/ABQuestion';
-
+import { ABCQuestion } from './componenets/ABCQuestion';
+import { useState } from "react";
 
 function App() {
+  const [state, setState] = useState({ question1: null, question2: null });
+  /* 
+  const stateReferences = useState(...);
+  const state = stateReferences[0];
+  const setState = stateReferences[1];
+   */
   // definiramo dvije funkcije i stavljamo ih u onClikEventhandler
-  const handleOnChoice = (choiceValue) => console.log(choiceValue);
+  //pozivamo metodu setState() -dva načina - 1. staviti novi objekt setState({}) i 2. funkcijski oblik koji vraća trenutno stanje i očekuje da damo novo stanje
+  const handleOnChoice = (choiceValue) => setState((currentState) =>({
+    ...currentState,
+    question1: choiceValue,
+  }));
+ // const handleOnChoice = (choiceValue) => console.log(choiceValue);
 //  const handleButtonBClick = () => console.log('Clicked B');
   return (
     <div className="App">
@@ -26,7 +38,9 @@ function App() {
           <button onClick={handleButtonAClick}>Blue pill</button>
           <button onClick={handleButtonBClick}>Red pill</button>
         </div> */}
-        <ABQuestion 
+        <div>{state.question1}, {state.question2}</div>
+        <ABQuestion
+          id="question1" 
           question="Make the right choice"
           buttonA="Blue pill"
           buttonB="Red pill"
@@ -35,13 +49,17 @@ function App() {
           onChoice={handleOnChoice}
           /* onButtonAClick={handleButtonAClick}
           onButtonBClick={handleButtonBClick} */
-        /><ABQuestion 
-        question="Make the right choice"
-        buttonA="Chocolate"
-        buttonB="Vanilla"
-        buttonAValue="Chocolate"
-        buttonBValue="Vanilla"
-        onChoice={handleOnChoice}
+        />
+        <ABCQuestion 
+          id="question2"
+          question="Make the right choice"
+          buttonA="Blue pill"
+          buttonB="Red pill"
+          buttonC="Pink pill"
+          buttonAValue="Blue"
+          buttonBValue="Red"
+          buttonCValue="Pink"
+          onChoice={handleOnChoice}
         />
       </header>
     </div>
