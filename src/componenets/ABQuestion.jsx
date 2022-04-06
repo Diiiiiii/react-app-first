@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import "./ABQuestion.css";
 
 /* button.addEventListener('click', props.onButtonAClick);
 button.addEventListener('click', () => {
@@ -11,9 +12,9 @@ export function ABQuestion(props) {
     
     
     return (
-        <div>
-          <p>{props.question}</p>
-          <div>
+        <div className="ABQuestion">
+          <p className="ABQestion__text">{props.question}</p>
+          <div className="ABQuestion__answers">
           {/* <button onClick={props.onButtonAClick}>{props.buttonA}</button>
           <button onClick={props.onButtonBClick}>{props.buttonB}</button> */}
             
@@ -21,10 +22,10 @@ export function ABQuestion(props) {
             {/*<button onClick = {handleOnClickB}>{props.buttonB}</button>  */}
             
             
-            <button onClick = {() => props.onChoice(props.buttonAValue)}>
+            <button className="ABQuestion__answer" onClick = {() => props.onChoice(props.buttonAValue)}>
                 {props.buttonA}
             </button>
-            <button onClick = {() => props.onChoice(props.buttonBValue)}>
+            <button className="ABQuestion__answer" onClick = {() => props.onChoice(props.buttonBValue)}>
                 {props.buttonB}
             </button>
           </div>
