@@ -7,8 +7,8 @@ button.addEventListener('click', () => {
 }) */
 
 export function ABQuestion(props) {
-    // const handleOnClickA = () => props.onChoice(props.buttonAValue);
-    // const handleOnClickB = () => props.onChoice(props.buttonBValue);
+     const handleOnClickA = () => props.onChoice(props.id, props.buttonAValue);
+     const handleOnClickB = () => props.onChoice(props.id, props.buttonBValue);
     
     
     return (
@@ -22,12 +22,19 @@ export function ABQuestion(props) {
             {/*<button onClick = {handleOnClickB}>{props.buttonB}</button>  */}
             
             
-            <button className="ABQuestion__answer" onClick = {() => props.onChoice(props.buttonAValue)}>
+            {/*<button className="ABQuestion__answer" onClick = {() => props.onChoice(props.buttonAValue)}>
                 {props.buttonA}
             </button>
             <button className="ABQuestion__answer" onClick = {() => props.onChoice(props.buttonBValue)}>
                 {props.buttonB}
-            </button>
+        </button>   */}
+
+        <button className="ABQuestion__answer" onClick = {handleOnClickA}>
+        {props.buttonA}
+        </button>
+        <button className="ABQuestion__answer" onClick = {handleOnClickB}>
+        {props.buttonB}
+        </button> 
           </div>
      </div>
     ); 

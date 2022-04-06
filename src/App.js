@@ -16,10 +16,12 @@ function App() {
    */
   // definiramo dvije funkcije i stavljamo ih u onClikEventhandler
   //pozivamo metodu setState() -dva načina - 1. staviti novi objekt setState({}) i 2. funkcijski oblik koji vraća trenutno stanje i očekuje da damo novo stanje
-  const handleOnChoice = (choiceValue) => setState((currentState) =>({
+  const handleOnChoice = (id, choiceValue) => {
+    setState((currentState) =>({
     ...currentState,
-    question1: choiceValue,
+    [id]: choiceValue,
   }));
+};
  // const handleOnChoice = (choiceValue) => console.log(choiceValue);
 //  const handleButtonBClick = () => console.log('Clicked B');
   return (
