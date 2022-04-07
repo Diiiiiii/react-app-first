@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>algebra-example-react-app</h1>
+        <h1>react-app-first</h1>
         <p>Your unique ID is: {idHelpers.generateId()}</p>
         <RepositoryLink>View Repository</RepositoryLink>
         <RandomValue values={[4, 5, 6]} />
