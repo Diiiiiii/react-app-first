@@ -5,6 +5,7 @@ import { RandomValue } from "./componenets/RandomValue";
 import { RepositoryLink } from "./componenets/RepositoryLink";
 import { ABQuestion } from './componenets/ABQuestion';
 import { ABCQuestion } from './componenets/ABCQuestion';
+import { FreeInputQuestion } from './componenets/FreeInputQuestion';
 import { useState } from "react";
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
    */
   // definiramo dvije funkcije i stavljamo ih u onClikEventhandler
   //pozivamo metodu setState() -dva načina - 1. staviti novi objekt setState({}) i 2. funkcijski oblik koji vraća trenutno stanje i očekuje da damo novo stanje
-  const handleOnChoice = (id, choiceValue) => {
+  const handleAnswer = (id, choiceValue) => {
     setState((currentState) =>({
     ...currentState,
     [id]: choiceValue,
@@ -40,7 +41,13 @@ function App() {
           <button onClick={handleButtonAClick}>Blue pill</button>
           <button onClick={handleButtonBClick}>Red pill</button>
         </div> */}
-        <div>{state.question1}, {state.question2}</div>
+        <div>{state.question1}, {state.question2}, {state.question3}
+        </div>
+        <FreeInputQuestion
+          id="question3"
+          text="Enter your name"
+          onKeyUp={handleAnswer}
+          />
         <ABQuestion
           id="question1" 
           question="Make the right choice"
@@ -48,7 +55,7 @@ function App() {
           buttonB="Red pill"
           buttonAValue="Blue"
           buttonBValue="Red"
-          onChoice={handleOnChoice}
+          onChoice={handleAnswer}
           /* onButtonAClick={handleButtonAClick}
           onButtonBClick={handleButtonBClick} */
         />
@@ -61,7 +68,7 @@ function App() {
           buttonAValue="Blue"
           buttonBValue="Red"
           buttonCValue="Pink"
-          onChoice={handleOnChoice}
+          onChoice={handleAnswer}
         />
       </header>
     </div>
