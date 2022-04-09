@@ -1,11 +1,35 @@
 // import { checkPropTypes } from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ABCQuestion } from "./ABCQuestion";
 import { ABQuestion } from "./ABQuestion";
 import { FreeInputQuestion } from "./FreeInputQuestion";
 
 export function Quiz(props) {
   const [state, setState] = useState({});
+
+  useEffect(() => {
+    props.onStateChange();
+  }, [state]);
+
+  /* useEffect(() => {
+    console.log('First mount!');
+
+    return () => {
+      console.log("Unmount!");
+    };
+   }, []);
+
+   useEffect(() => {
+     console.log("New state!");
+
+     return () => {
+       console.log("Old state!");
+     };
+   });
+
+   useEffect(() => {
+     console.log("Dependency change", state.question1);
+   }, [state.question1]); */
 
   const handleAnswer = (id, choiceValue) => {
     setState((currentState) => ({
