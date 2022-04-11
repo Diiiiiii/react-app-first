@@ -4,11 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const toDate = new Date().toLocaleDateString();
+const nowTime = new Date().toLocaleTimeString();
 ReactDOM.render(
+  <>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+    
+    <div className = 'date-app'>Today is {toDate}</div>
+    <div className = 'time-app'>Now is {nowTime}</div>
+    
+  </React.StrictMode>
+
+  </>,
   document.getElementById('root')
+ 
 );
 
 // If you want to start measuring performance in your app, pass a function
