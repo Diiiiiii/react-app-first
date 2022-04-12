@@ -4,13 +4,20 @@ import { ABCQuestion } from "./ABCQuestion";
 import { ABQuestion } from "./ABQuestion";
 import { FreeInputQuestion } from "./FreeInputQuestion";
 
+const questions = [
+  "Enter your name",
+  "Enter your age",
+  "Enter your favourite food"
+];
+
+
 export function Quiz(props) {
   const [state, setState] = useState({});
 
-  useEffect(() => {
+ /*  useEffect(() => {
     props.onStateChange();
   }, [state]);
-
+ */
   /* useEffect(() => {
     console.log('First mount!');
 
@@ -42,12 +49,24 @@ export function Quiz(props) {
     props.onSubmit(state, props.id);
   };
 
+  const questionsMap = questions.map((question, index) => { 
+    return (
+  <FreeInputQuestion 
+    key={index} 
+    id={`freeInputQuestion${index}`}
+    text={question} 
+    onKeyUp={handleAnswer}
+     />
+  );
+  });
+
   return (
     <div>
+      {questionsMap}
       {/* <div>
         {state.question1}, {state.question2}, {state.question3}
       </div> */}
-      <FreeInputQuestion id="question3" text="Enter your name" onKeyUp={handleAnswer} />
+      {/* <FreeInputQuestion id="question3" text="Enter your name" onKeyUp={handleAnswer} /> */}
       <ABQuestion
         id="question1"
         question="Make the right choice"
