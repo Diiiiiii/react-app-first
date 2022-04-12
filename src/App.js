@@ -10,13 +10,16 @@ import {LoginForm} from "./components/LoginForm";
 function App() {
   const [actionCount, setActionCount] = useState(0);
   const [quizAnswer, setQuizAnswer] = useState(null);
+  const [loginState, setLoginState] = useState(null);
   const id = idHelpers.generateId();
   const handleSubmit = (answers, id) => { 
   setQuizAnswer({answers, id});
 };
   const handleStateChange = () => setActionCount((state) => state + 1);
-  const handleLogin = (formState) => console.log(formState);
-  
+ // const handleLogin = (formState) => console.log(formState);
+ const handleLogin = (formState) => {
+   setLoginState(formState);
+ };
   
   return (
     <div className="App">
@@ -27,8 +30,14 @@ function App() {
         <p>Your action count is: {actionCount}</p>
         <RepositoryLink>View Repository</RepositoryLink>
         {/* <RandomValue values={[4, 5, 6]} /> */}
-        <LoginForm onLogin={handleLogin}/>
-        {quizAnswer === null && (
+        {/* <LoginForm onLogin={handleLogin}/> */}
+        {loginState === null && <LoginForm onLogin={handleLogin} />}
+        {loginState !== null && (
+          <div>
+            {loginState.name} ({loginState.email})
+          </div>
+        )}
+        {quizAnswer === null && loginState !== null && (
           <Quiz id = {id} onSubmit={handleSubmit} onStateChange= {handleStateChange}/>
         )}
         { quizAnswer !== null && <div>{JSON.stringify(quizAnswer)}</div>}
