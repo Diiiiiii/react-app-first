@@ -36,36 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-
-.date-app {
-    
-    background:#dfdfdf;
-    border: 1px solid black;
-    color: #753be5;
-    font-family: monospace;
-    font-size: 1rem;
-    width: 50%;
-    padding: 1rem;
-    margin: 0.5rem;
-    text-align: center;
-    
-
-}
-
-.time-app {
-  background: #bed1ba;
-    border: 1px solid black;
-    color: #753be5;
-    font-family: monospace;
-    font-size: 1rem;
-    width: 50%;
-    padding: 1rem;
-    margin: 0.5rem;
-    text-align: center;
-    
-}
-
-.div {
-  display: inline;
-}

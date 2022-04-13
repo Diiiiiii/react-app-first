@@ -20,6 +20,21 @@ function App() {
  const handleLogin = (formState) => {
    setLoginState(formState);
  };
+
+ let answerComponents = null;
+
+ if (quizAnswer !== null) {
+  answerComponents = Object.keys(quizAnswer.answers).map((key) => {
+    console.log(key);
+   return (
+     <div key={key}>
+     {key}: {quizAnswer.answers[key]}
+     </div>
+   );
+  });
+
+  console.log(answerComponents);
+ }
   
   return (
     <div className="App">
@@ -40,7 +55,10 @@ function App() {
         {quizAnswer === null && loginState !== null && (
           <Quiz id = {id} onSubmit={handleSubmit} onStateChange= {handleStateChange}/>
         )}
-        { quizAnswer !== null && <div>{JSON.stringify(quizAnswer)}</div>}
+        
+        { quizAnswer !== null && answerComponents}
+         
+ 
       </header>
     </div>
     
@@ -48,3 +66,4 @@ function App() {
   }
 
 export default App;
+ /*{ quizAnswer !== null && <div>{JSON.stringify(quizAnswer)}</div>}*/
