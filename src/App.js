@@ -6,6 +6,7 @@ import { RepositoryLink } from "./components/RepositoryLink";
 import { Quiz } from "./components/Quiz";
 import { useState} from "react";
 import {LoginForm} from "./components/LoginForm";
+import { Timer } from "./components/Timer";
 
 function App() {
   const [actionCount, setActionCount] = useState(0);
@@ -20,6 +21,7 @@ function App() {
  const handleLogin = (formState) => {
    setLoginState(formState);
  };
+ //const handleTimerFinish = (time) => setFinishTime(time);
 
  let answerComponents = null;
 
@@ -55,7 +57,10 @@ function App() {
         {quizAnswer === null && loginState !== null && (
           <Quiz id = {id} onSubmit={handleSubmit} onStateChange= {handleStateChange}/>
         )}
-        
+        <>
+        <Timer onTick={(time) => console.log(time)} onFinish={handleTimerFinish} />
+            <Quiz onSubmit={handleSubmit} onStateChange={handleStateChange} />
+        </>
         { quizAnswer !== null && answerComponents}
          
  
