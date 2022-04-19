@@ -12,6 +12,7 @@ function App() {
   const [actionCount, setActionCount] = useState(0);
   const [quizAnswer, setQuizAnswer] = useState(null);
   const [loginState, setLoginState] = useState(null);
+  const [finishTime, setFinishTime] = useState(null);
   const id = idHelpers.generateId();
   const handleSubmit = (answers, id) => { 
   setQuizAnswer({answers, id});
@@ -21,7 +22,7 @@ function App() {
  const handleLogin = (formState) => {
    setLoginState(formState);
  };
- //const handleTimerFinish = (time) => setFinishTime(time);
+ const handleTimerFinish = (time) => setFinishTime(time);
 
  let answerComponents = null;
 
@@ -55,14 +56,19 @@ function App() {
           </div>
         )}
         {quizAnswer === null && loginState !== null && (
-          <Quiz id = {id} onSubmit={handleSubmit} onStateChange= {handleStateChange}/>
-        )}
-        <>
-        <Timer onTick={(time) => console.log(time)} onFinish={handleTimerFinish} />
-            <Quiz onSubmit={handleSubmit} onStateChange={handleStateChange} />
-        </>
-        { quizAnswer !== null && answerComponents}
          
+        
+        <>
+        <Timer onFinish={handleTimerFinish}
+        // izdvojimo u zasebnu funkciju
+        //  onTick={(time) => console.log('tick', time)} 
+        //  onFinish={(time) => setFinishTime(time)}  
+          />
+        <Quiz id = {id} onSubmit={handleSubmit} onStateChange= {handleStateChange}/>
+        </>
+        )}
+        { quizAnswer !== null && answerComponents}
+        { finishTime !== null && <div>{finishTime} s</div>}
  
       </header>
     </div>
