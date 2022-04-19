@@ -22,7 +22,7 @@ export function Timer(props) {
   //    setIsStopped(true);
     //  props.onFinish(refTime.current);
     };
-  }, [props]);
+  }, []);
 
   useEffect(() => {
     props.onTick(time);

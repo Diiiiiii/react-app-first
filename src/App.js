@@ -13,7 +13,9 @@ function App() {
   const [quizAnswer, setQuizAnswer] = useState(null);
   const [loginState, setLoginState] = useState(null);
   const [finishTime, setFinishTime] = useState(null);
+  
   const id = idHelpers.generateId();
+  
   const handleSubmit = (answers, id) => { 
   setQuizAnswer({answers, id});
 };

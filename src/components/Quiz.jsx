@@ -1,61 +1,95 @@
-// import { checkPropTypes } from "prop-types";
-import { useEffect, useState } from "react";
-import { ABCQuestion } from "./ABCQuestion";
-import { ABQuestion } from "./ABQuestion";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../contexts/AppContext";
 import { FreeInputQuestion } from "./FreeInputQuestion";
+import { SingleChoiceQuestion } from "./SingleChoiceQuestion";
 
-/* const questions = [
-  "Enter your name",
-  "Enter your age",
-  "Enter your favourite food"
-];
- */
 const questions = [
-  { 
+  {
     text: "Enter your name",
     id: "name",
- },
- {
-   text: "Enter your age",
-   id: "age",
- },
- {
-   text:"Enter your favourite food",
+  },
+  {
+    text: "Enter your age",
+    id: "age",
+  },
+  {
+    text: "Enter your favourite food",
     id: "food",
- }, 
- {
-  text:"Enter your city",
-   id: "city",
-},
+  },
+  {
+    text: "Enter your city",
+    id: "city",
+  },
 ];
 
+const singleChoiceQuestions = [
+  {
+    id: "singleChoiceQuestion1",
+    question: "Make a choice:",
+    options: [
+      {
+        text: "Option A",
+        value: "A",
+        id: "option-a",
+      },
+      {
+        text: "Option B",
+        value: "B",
+        id: "option-b",
+      },
+      {
+        text: "Option C",
+        value: "C",
+        id: "option-c",
+      },
+    ],
+  },
+  {
+    id: "question1",
+    question: "Make the right choice:",
+    options: [
+      {
+        id: "blue-pill",
+        text: "Blue pill",
+        value: "Blue",
+      },
+      {
+        id: "red-pill",
+        text: "Red pill",
+        value: "Red",
+      },
+    ],
+  },
+  {
+    id: "question2",
+    question: "Make the right choice:",
+    options: [
+      {
+        id: "blue-pill",
+        text: "Blue pill",
+        value: "Blue",
+      },
+      {
+        id: "red-pill",
+        text: "Red pill",
+        value: "Red",
+      },
+      {
+        id: "pink-pill",
+        text: "Pink pill",
+        value: "Pink",
+      },
+    ],
+  },
+];
 
 export function Quiz(props) {
+  const appState = useContext(AppContext);
   const [state, setState] = useState({});
 
-   useEffect(() => {
+  useEffect(() => {
     props.onStateChange();
   }, [state]);
- 
-  /* useEffect(() => {
-    console.log('First mount!');
-
-    return () => {
-      console.log("Unmount!");
-    };
-   }, []);
-
-   useEffect(() => {
-     console.log("New state!");
-
-     return () => {
-       console.log("Old state!");
-     };
-   });
-
-   useEffect(() => {
-     console.log("Dependency change", state.question1);
-   }, [state.question1]); */
 
   const handleAnswer = (id, choiceValue) => {
     setState((currentState) => ({
@@ -65,58 +99,36 @@ export function Quiz(props) {
   };
 
   const handleSubmit = () => {
-    props.onSubmit(state, props.id);
+    props.onSubmit(state, appState.state.id);
   };
 
- /*  const questionsMap = questions.map((question, index) => { 
+  const questionsMap = questions.map((question) => {
     return (
-  <FreeInputQuestion 
-    key={index} 
-    id={`freeInputQuestion${index}`}
-    text={question} 
-    onKeyUp={handleAnswer}
-     />
-  );
-  }); */
+      <FreeInputQuestion
+        key={question.id}
+        id={question.id}
+        text={question.text}
+        onKeyUp={handleAnswer}
+      />
+    );
+  });
 
-  const questionsMap = questions.map((question) => { 
+  const singleChoiceQuestionsMap = singleChoiceQuestions.map((question) => {
     return (
-  <FreeInputQuestion 
-    key={question.id} 
-    id={question.id}
-    text={question.text} 
-    onKeyUp={handleAnswer}
-     />
-  );
+      <SingleChoiceQuestion
+        key={question.id}
+        id={question.id}
+        question={question.question}
+        options={question.options}
+        onChoice={handleAnswer}
+      />
+    );
   });
 
   return (
     <div>
       {questionsMap}
-      {/* <div>
-        {state.question1}, {state.question2}, {state.question3}
-      </div> */}
-      {/* <FreeInputQuestion id="question3" text="Enter your name" onKeyUp={handleAnswer} /> */}
-      <ABQuestion
-        id="question1"
-        question="Make the right choice"
-        buttonA="Blue pill"
-        buttonB="Red pill"
-        buttonAValue="Blue"
-        buttonBValue="Red"
-        onChoice={handleAnswer}
-      />
-      <ABCQuestion
-        id="question2"
-        question="Make the right choice"
-        buttonA="Blue pill"
-        buttonB="Red pill"
-        buttonC="Pink pill"
-        buttonAValue="Blue"
-        buttonBValue="Red"
-        buttonCValue="Pink"
-        onChoice={handleAnswer}
-      />
+      {singleChoiceQuestionsMap}
       <button onClick={handleSubmit}>Submit</button>
     </div>
   );
