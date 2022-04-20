@@ -1,20 +1,24 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import { idHelpers } from "./library/helpers";
+//import { idHelpers } from "./library/helpers";
 //import { RandomValue } from "./components/RandomValue";
 import { RepositoryLink } from "./components/RepositoryLink";
 import { Quiz } from "./components/Quiz";
-import { useState} from "react";
+import { useContext, useState} from "react";
 import {LoginForm} from "./components/LoginForm";
 import { Timer } from "./components/Timer";
+import { AppContext } from "./contexts/AppContext";
+
 
 function App() {
+  const appState = useContext(AppContext);
+  console.log(appState);
   const [actionCount, setActionCount] = useState(0);
   const [quizAnswer, setQuizAnswer] = useState(null);
   const [loginState, setLoginState] = useState(null);
   const [finishTime, setFinishTime] = useState(null);
   
-  const id = idHelpers.generateId();
+//  const id = idHelpers.generateId();
   
   const handleSubmit = (answers, id) => { 
   setQuizAnswer({answers, id});
@@ -44,6 +48,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <button onClick={() => appState.setId("foo")}>
+          Click me
+          </button>
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         {/* <h1>react-app-first</h1> */}
         {/* <p>Your unique ID is: {id}</p> */}
@@ -66,10 +73,14 @@ function App() {
         //  onTick={(time) => console.log('tick', time)} 
         //  onFinish={(time) => setFinishTime(time)}  
           />
-        <Quiz id = {id} onSubmit={handleSubmit} onStateChange= {handleStateChange}/>
+        <Quiz 
+              //id = {appState.id} 
+              onSubmit={handleSubmit} 
+              onStateChange= {handleStateChange}/>
         </>
         )}
         { quizAnswer !== null && answerComponents}
+        { quizAnswer !== null  && <div>{quizAnswer.id}</div>}
         { finishTime !== null && <div>{finishTime} s</div>}
  
       </header>

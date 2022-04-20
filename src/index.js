@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { AppProvider} from "./contexts/AppContext";
+import { idHelpers } from './library/helpers';
 /* document.querySelectorAll("[data-counter-app]").forEach((element => {
   ReactDOM.render(
   <React.StrictMode>
@@ -15,7 +16,9 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+    <AppProvider value={{ id: idHelpers.generateId() }}>
     <App />
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

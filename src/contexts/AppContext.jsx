@@ -1,9 +1,25 @@
+// import React, { useState } from "react";
+//import React, { useState } from "react";
 import React, { useState } from "react";
 
 export const AppContext = React.createContext();
+//export const AppProvider = AppContext.Provider;
 export const AppConsumer = AppContext.Consumer;
 
-const translations = {
+export function AppProvider(props) {
+  const [state, setState] = useState(props.value);
+
+  const value = {
+  state: state,
+  setState: setState,
+  setId: (id) => setState((state) => ({ ...state, id: id})),
+};
+  return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
+}
+
+
+
+/* const translations = {
   "en.currentLocale": "Current locale",
   "hr.currentLocale": "Trenutni jezik",
   "en.View Repository": "View Repository",
@@ -33,4 +49,4 @@ export function AppProvider(props) {
   };
 
   return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
-}
+} */
