@@ -9,14 +9,20 @@ export class RepositoryLink extends React.Component {
     //metoda koja se nalazi na klasama, iznad
     super();
     this.props = props;
+    console.log(this.props);
   }
 
   render() {
+    let translation = this.props.children;
+
+    if (this.props.translate) {
+      translation = this.props.translate(this.props.children);
+    }
     return (
       <a
             className="RepositoryLink"
             href="https://github.com/Diiiiiii/react-app-first">
-              {this.props.children}
+              {translation}
              {/* GitHub Repository Link  */}
           </a>
     );

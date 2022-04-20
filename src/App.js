@@ -8,7 +8,9 @@ import { useContext, useState} from "react";
 import {LoginForm} from "./components/LoginForm";
 import { Timer } from "./components/Timer";
 import { AppContext } from "./contexts/AppContext";
+import { withLocale } from "./hoc/withLocale.jsx";
 
+const LocalizedRepositoryLink = withLocale(RepositoryLink);
 
 function App() {
   const appState = useContext(AppContext);
@@ -51,11 +53,16 @@ function App() {
         <button onClick={() => appState.setId("foo")}>
           Click me
           </button>
+         <div>{appState.translate("currentLocale")}: {appState.locale}</div>
+        <button onClick={() => appState.setLocale("hr")}>HR</button> 
+        <button onClick={() => appState.setLocale("en")}>EN</button> 
+        <button onClick={() => appState.setLocale("de")}>DE</button> 
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         {/* <h1>react-app-first</h1> */}
         {/* <p>Your unique ID is: {id}</p> */}
         <p>Your action count is: {actionCount}</p>
         <RepositoryLink>View Repository</RepositoryLink>
+        <LocalizedRepositoryLink>View Repository</LocalizedRepositoryLink>
         {/* <RandomValue values={[4, 5, 6]} /> */}
         {/* <LoginForm onLogin={handleLogin}/> */}
         {loginState === null && <LoginForm onLogin={handleLogin} />}
