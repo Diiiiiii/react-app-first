@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Button } from "./Button";
 
 export function LoginForm(props) {
     const [state, setState] = useState({});
 
     const handleChange = (event) => {
-        console.log(event.target.value, event.target.name);
+    // console.log(event.target.value, event.target.name);
        setState({...state, [event.target.name]: event.target.value});
         //state[event.target.name] = event.target.value
         //state.name = event.target.value
@@ -12,7 +13,7 @@ export function LoginForm(props) {
 
     const handleSubmint = (event) => {
         event.preventDefault();
-        console.log("submit", state);
+       // console.log("submit", state);
         props.onLogin(state);
     };
 
@@ -31,7 +32,9 @@ export function LoginForm(props) {
              </label>
          </div>
          <div>
-             <button type="submit">Sign in</button>
+             <Button buttonType="primary" type="submit">
+                 Sign in
+            </Button>
          </div>
      </form>
     );
