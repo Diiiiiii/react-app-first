@@ -10,6 +10,7 @@ import { Timer } from "./components/Timer";
 import { AppContext } from "./contexts/AppContext";
 import { withLocale } from "./hoc/withLocale.jsx";
 import { Heading } from "./components/typography/Heading";
+import { Paragraph } from "./components/Paragraph";
 import { Button } from "./components/Button";
 
 const LocalizedRepositoryLink = withLocale(RepositoryLink);
@@ -58,7 +59,9 @@ function App() {
 
      
         <Button buttonType="primary" onClick={() => appState.setId("foo")}>Click me</Button>
-         <div>{appState.translate("currentLocale")}: {appState.locale}</div>
+         <Paragraph element="div">
+           {appState.translate("currentLocale")}: {appState.locale}
+         </Paragraph>
         <Button buttonType="primary" onClick={() => appState.setLocale("hr")}>
           HR
         </Button> 
@@ -72,7 +75,7 @@ function App() {
         {/* <h1>react-app-first</h1> */}
         {/* <p>Your unique ID is: {id}</p> */}
         
-        <p>Your action count is: {actionCount}</p>
+        <Paragraph element="p">Your action count is: {actionCount}</Paragraph>
         <RepositoryLink>View Repository</RepositoryLink>
         <LocalizedRepositoryLink>View Repository</LocalizedRepositoryLink>
         {/* <RandomValue values={[4, 5, 6]} /> */}
