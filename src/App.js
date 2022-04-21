@@ -1,5 +1,5 @@
 // import logo from "./logo.svg";
-import "./App.css";
+//import "./App.css";
 //import { idHelpers } from "./library/helpers";
 //import { RandomValue } from "./components/RandomValue";
 import { RepositoryLink } from "./components/RepositoryLink";
@@ -9,6 +9,8 @@ import {LoginForm} from "./components/LoginForm";
 import { Timer } from "./components/Timer";
 import { AppContext } from "./contexts/AppContext";
 import { withLocale } from "./hoc/withLocale.jsx";
+import { Heading } from "./components/typography/Heading";
+import { Button } from "./components/Button";
 
 const LocalizedRepositoryLink = withLocale(RepositoryLink);
 
@@ -50,16 +52,26 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={() => appState.setId("foo")}>
-          Click me
-          </button>
+        <Heading element="h1" size="6">Hello World!</Heading>
+        <Heading element="h2" size="5">Hello World!</Heading>
+        <Heading element="h3" size="4">Hello World!</Heading>
+
+     
+        <Button buttonType="primary" onClick={() => appState.setId("foo")}>Click me</Button>
          <div>{appState.translate("currentLocale")}: {appState.locale}</div>
-        <button onClick={() => appState.setLocale("hr")}>HR</button> 
-        <button onClick={() => appState.setLocale("en")}>EN</button> 
-        <button onClick={() => appState.setLocale("de")}>DE</button> 
+        <Button buttonType="primary" onClick={() => appState.setLocale("hr")}>
+          HR
+        </Button> 
+        <Button buttonType="secondary" onClick={() => appState.setLocale("en")}>
+          EN
+        </Button> 
+        <Button buttonType="ghost" onClick={() => appState.setLocale("de")}>
+          DE
+        </Button> 
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         {/* <h1>react-app-first</h1> */}
         {/* <p>Your unique ID is: {id}</p> */}
+        
         <p>Your action count is: {actionCount}</p>
         <RepositoryLink>View Repository</RepositoryLink>
         <LocalizedRepositoryLink>View Repository</LocalizedRepositoryLink>
