@@ -9,7 +9,7 @@ import {LoginForm} from "./components/LoginForm";
 import { Timer } from "./components/Timer";
 import { AppContext } from "./contexts/AppContext";
 import { withLocale } from "./hoc/withLocale.jsx";
-import { Heading } from "./components/typography/Heading";
+import { Heading } from "./components/Heading";
 import { Paragraph } from "./components/Paragraph";
 import { Button } from "./components/Button";
 

@@ -1,4 +1,4 @@
-import "./Button.css";
+import "../styles/Button.css";
 
 export function Button({ buttonType, ...restProps }) {
   let className = "Button";

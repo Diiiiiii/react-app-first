@@ -1,4 +1,4 @@
-import "./Paragraph.css";
+import "../styles/Paragraph.css";
 import React from "react";
 
 export function Paragraph(props) {

@@ -11,14 +11,14 @@ export function LoginForm(props) {
         //state.name = event.target.value
     };
 
-    const handleSubmint = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
        // console.log("submit", state);
         props.onLogin(state);
     };
 
     return (
-     <form onSubmit={handleSubmint}>
+     <form onSubmit={handleSubmit}>
          <div>
              <label htmlFor="name">
                 Name:

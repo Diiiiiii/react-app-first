@@ -1,4 +1,4 @@
-import "./Heading.css";
+import "../styles/Heading.css";
 import React from "react";
 
 export function Heading(props) {
