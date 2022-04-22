@@ -7,6 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AppProvider} from "./contexts/AppContext";
 import { idHelpers } from './library/helpers';
+import { BrowserRouter } from 'react-router-dom';
 /* document.querySelectorAll("[data-counter-app]").forEach((element => {
   ReactDOM.render(
   <React.StrictMode>
@@ -18,9 +19,11 @@ import { idHelpers } from './library/helpers';
 
 ReactDOM.render(
   <React.StrictMode>
+    <BrowserRouter>
     <AppProvider value={{ id: idHelpers.generateId() }}>
     <App />
     </AppProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
