@@ -12,7 +12,7 @@ import { withLocale } from "./hoc/withLocale.jsx";
 import { Heading } from "./components/Heading";
 import { Paragraph } from "./components/Paragraph";
 import { Button } from "./components/Button";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useParams } from "react-router-dom";
 
 function HomePage() {
   return (
@@ -24,9 +24,11 @@ function HomePage() {
 }
 
 function HelpPage() {
+  const params = useParams();
+ 
   return (
     <div>
-      <h1>Help page</h1>
+      <h1>Help page for topic {params.topic}</h1>
       <Link to="/">Home page</Link>
     </div>
   );
@@ -73,7 +75,9 @@ function App() {
     <div className="App">
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path="help" element={<HelpPage />} />
+        <Route path="help" element={<HelpPage />} >
+          <Route path=":topic" element={<HelpPage />} />
+        </Route>
       </Routes>
 
       <header className="App-header">
