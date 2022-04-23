@@ -13,26 +13,8 @@ import { Heading } from "./components/Heading";
 import { Paragraph } from "./components/Paragraph";
 import { Button } from "./components/Button";
 import { Routes, Route, Link, useParams } from "react-router-dom";
-
-function HomePage() {
-  return (
-    <div>
-      <h1>Home page</h1>
-      <Link to="/help">Help page</Link>
-    </div>
-  );
-}
-
-function HelpPage() {
-  const params = useParams();
- 
-  return (
-    <div>
-      <h1>Help page for topic {params.topic}</h1>
-      <Link to="/">Home page</Link>
-    </div>
-  );
-}
+import { HelpPage} from "./pages/HelpPage";
+import { HomePage } from "./pages/HomePage";
 
 const LocalizedRepositoryLink = withLocale(RepositoryLink);
 
