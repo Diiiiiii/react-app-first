@@ -13,10 +13,12 @@ const translations = {
 export function AppProvider(props) {
   const [state, setState] = useState(props.value);
   const [locale, setLocale] = useState("en");
+  const [user, setUser] = useState(null);
 
   const value = {
     locale: locale,
     state: state,
+    user: user,
     setState: setState,
     setId: (id) => setState((state) => ({ ...state, id: id })),
     setLocale: (locale) => setLocale(locale),
@@ -30,6 +32,9 @@ export function AppProvider(props) {
         return translationValue;
       }
     },
+    signIn: (name, email) => setUser ({name, email}),
+    signOut: () => setUser(null),
+    isSignedIn: user !== null,
   };
 
   return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
