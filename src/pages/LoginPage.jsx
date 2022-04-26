@@ -17,7 +17,7 @@ const handleLogin = (formState) => {
  
   return (
     <div className="LoginPage">
-        <ExchangeRates />
+        <ExchangeRates  />
         <RandomQuote  />
         <LoginForm onLogin={handleLogin} />
         <NasaImage />      
