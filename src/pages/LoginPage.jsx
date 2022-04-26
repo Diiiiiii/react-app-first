@@ -4,6 +4,7 @@ import { AppContext} from "../contexts/AppContext";
 import {LoginForm} from "../components/LoginForm";
 import { RandomQuote } from "../containers/RandomQuote";
 import { NasaImage } from "../containers/NasaImage";
+import { ExchangeRates } from "../containers/ExchangeRates";
 
 export function LoginPage() {
 const navigate =useNavigate();
@@ -16,6 +17,7 @@ const handleLogin = (formState) => {
  
   return (
     <div className="LoginPage">
+        <ExchangeRates />
         <RandomQuote  />
         <LoginForm onLogin={handleLogin} />
         <NasaImage />      

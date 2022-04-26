@@ -8,6 +8,8 @@ import reportWebVitals from './reportWebVitals';
 import { AppProvider} from "./contexts/AppContext";
 import { idHelpers } from './library/helpers';
 import { BrowserRouter } from 'react-router-dom';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
 /* document.querySelectorAll("[data-counter-app]").forEach((element => {
   ReactDOM.render(
   <React.StrictMode>
@@ -17,12 +19,18 @@ import { BrowserRouter } from 'react-router-dom';
   );
 }); */
 
+const client = new ApolloClient({
+  uri: "https://48p1r2roz4.sse.codesandbox.io",
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <AppProvider value={{ id: idHelpers.generateId() }}>
-    <App />
-    </AppProvider>
+      <ApolloProvider client={client}>
+        <AppProvider value={{ id: idHelpers.generateId() }}>
+          <App />
+        </AppProvider>
+      </ApolloProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
